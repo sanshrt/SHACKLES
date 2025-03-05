@@ -5,19 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Workshop Payment</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Ubuntu&family=Monomaniac+One&family=Encode+Sans+Semi+Expanded&family=Goldman" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
-        body {
-            background: url('{% static "dark-racer-bg.jpeg" %}') no-repeat center center fixed;
-            background-size: cover;
-            font-family: 'Orbitron', sans-serif;
+         body {
+            position: relative;
+            font-family: 'Rokkit', serif;
             color: #ffffff;
-            background-color: black;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+        }
+
+        /* Background Image (Pseudo-element) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
+            z-index: -2; /* Keeps it behind everything */
+        }
+
+        /* Dark Overlay (Separate from the image) */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Adjust darkness here */
+            z-index: -1; /* Stays above the image but behind content */
+        }
+
+        /* Large screens: Make overlay slightly lighter */
+        @media (min-width: 1024px) {
+            body::after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
+                z-index: -1;
+            }
+        }
+        .su{
+            font-family: 'Ubuntu', sans-serif;
+            ;
+        }
+        .workshop{
+            font-family: 'Chakra Petch', sans-serif;
+        }
+
+        /* Main Content */
+        .content {
+            font-family: 'Rokkit', serif;
+        }
+        .workshopdes {
+            font-family: 'Encode Sans Semi Expanded', sans-serif;
+        }
+
+        /* "Shackles" Heading */
+        .shackles-title {
+            font-family: 'Bungee Inline', cursive;
+        }
+        /* Titles */
+        .title {
+            font-family: 'Monomaniac One', sans-serif;
+        }
+        .navf{
+            font-family: 'Goldman', sans-serif;
         }
 
         .neon-button {
@@ -50,46 +114,152 @@
             color: #ff0000;
             text-shadow: 0 0 10px rgba(255, 255, 255, 0.7), 0 0 20px rgba(255, 0, 0, 0.6);
         }
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            color: rgba(255, 255, 255, 0.8);
+        footer {
+            margin-top: auto;
+            background-color: #333;
+            color: #ccc;
+            padding: 1rem 0;
             text-align: center;
-            padding: 10px 0;
+        }
+        #menu-small {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 0;
+            background-color: white;
+            text-align: right;
+            z-index: 999;
+        }
+
+        /* Show menu when it's toggled on small screens */
+        #menu-small.show {
+            display: block;
+        }
+
+        /* Small screen adjustments */
+        @media (max-width: 640px) {
+            
+        #menu-small {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100%;
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.9); /* Darker for visibility */
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transform: translateX(100%); /* Starts hidden */
+            transition: transform 0.3s ease-in-out;
+            z-index: 999; /* Ensures menu is behind toggle button */
+            pointer-events: none; /* Prevents blocking clicks when hidden */
+        }
+
+        /* Show menu when toggled */
+        #menu-small.show {
+            transform: translateX(0); /* Moves into view */
+            pointer-events: auto; /* Allows interaction */
+        }
+
+        #menu-small a {
+            padding: 10px;
+            font-weight: bold;
+            display: block;
+            color: white;
+            text-align: center;
+        }
+
+        #menu-small a:hover {
+            background-color: #b82200;
+        }
+        }
+
+        /* Toggle Button (Ensure it's above the menu) */
+        #menu-toggle {
+            position: fixed;
+            top: 15px;
+            right: 15px;
+            z-index: 1000; /* Higher than #menu-small */
+            
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+
+
+
+        /* Large screen adjustments */
+        @media (min-width: 1024px) {
+            #menu-large {
+                display: flex;
+                justify-content: space-around;
+                width: auto;
+            }
+
+            #menu-large a {
+                padding: 10px 20px;
+                color: white;
+                font-weight: bold;
+            }
+
+            #menu-large a:hover {
+                background-color: rgba(255, 0, 0, 0.8);
+            }
         }
     </style>
 </head>
 <body>
-    <nav class="p-5 bg-red-600 flex items-center justify-between relative z-10">
-        <h1 class="text-xl font-extrabold mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
-            Shackles
+    <nav class="p-5 flex items-center justify-between relative z-10">
+        <h1 class="text-xl font-extrabold mx-auto md:mx-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+            
         </h1>
-     </nav>
+        <button id="menu-toggle" class="md:hidden text-white">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+        </button>
+    
+        <!-- Large Screen Menu (Visible from md: 768px onwards) -->
+        <div id="menu-large" class="hidden md:flex md:space-x-3 navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            
+        </div>
+    
+        <!-- Small Screen Menu (Hidden above 768px) -->
+        <div id="menu-small" class="hidden md:hidden flex flex-col items-center rounded-l-xl navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            
+        </div>
+    </nav>
     <div class="container p-5">
-        <h1 class="text-2xl font-bold mb-4 neon-text">Payment for {{ workshop.name }}</h1>
-        <p class="text-lg">The fee for this workshop is ₹{{ workshop.fees }}.</p>
-        <p class="mt-4 text-lg">Kindly complete your payment and send the transaction details to the provided contact number.</p>
-        <h2 class="mt-4 text-lg font-bold neon-text">Contact: 6379721151</h2>
+        <h1 class="text-2xl workshop font-bold mb-4  ">Payment for {{ workshop.name }}</h1>
+        <p class="text-lg workshopdes">The fee for this workshop is ₹{{ workshop.fees }}.</p>
+        <p class="mt-4 workshopdes text-lg">Kindly complete your payment and send the transaction details to the provided contact number.</p>
+        <h2 class="mt-4 text-lg workshopdes font-bold ">Marudhan: 9080849635</h2>
         <a href="{% url 'workshop_list' %}" class="neon-button w-full py-3 text-lg mt-4 text-center block">
             Back to Workshops
         </a>
     </div>
-    <!-- Chatbot Icon -->
-    <div class="chatbot-icon" id="chatbotIcon">
-        <img src="https://img.icons8.com/material-rounded/30/ffffff/chat.png" alt="Chat Icon">
-    </div>
-
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="close-btn" id="closeBtn">×</div>
-        <iframe allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/8c8ff597-f213-4527-8f0f-88b36dcc9885"></iframe>
-    </div>
-    <footer class=" footer bg-gray-800  py-4">
-        
-        <p>© 2025 Shackles Symposium.</p>
+    
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
     <script>
+        // Toggle mobile menu
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.getElementById('menu-small').classList.toggle('show');
+        });
+        
         const chatbotIcon = document.getElementById('chatbotIcon');
         const chatbotContainer = document.getElementById('chatbotContainer');
         const closeBtn = document.getElementById('closeBtn');
@@ -100,8 +270,7 @@
 
         closeBtn.addEventListener('click', () => {
         chatbotContainer.style.display = 'none';
-        }); 
-    </script>
+        });
     </script>
 </body>
 </html>
