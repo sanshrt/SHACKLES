@@ -131,6 +131,11 @@ STATICFILES_DIRS = [
 
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+CSRF_TRUSTED_ORIGINS = [
+    "https://shackles-production.up.railway.app",
+]
+
+
 
 
 # Default primary key field type
