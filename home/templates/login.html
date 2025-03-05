@@ -5,81 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Goldman&family=Chakra+Petch&family=Lora&family=Monomaniac+One&family=Orbitron&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
-      /* Remove background from body and apply it using a pseudo-element */
     body {
-        position: relative;
-        font-family: 'Rokkit', serif;
-        color: #ffffff;
-        display: flex;
-        flex-direction: column;
-        min-height: 100vh;
-    }
-
-    /* Background Image (Pseudo-element) */
-    body::before {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: url("{% static 'phonecars.jpeg' %}") center/cover no-repeat fixed;
-        z-index: -2; /* Keeps it behind everything */
-    }
-
-    /* Dark Overlay (Separate from the image) */
-    body::after {
-        content: "";
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.6); /* Adjust darkness here */
-        z-index: -1; /* Stays above the image but behind content */
-    }
-
-    /* Large screens: Make overlay slightly lighter */
-    @media (min-width: 1024px) {
-        body::after {
-            background: rgba(0, 0, 0, 0.4);
-            background: url("{% static 'cars.jpeg' %}") center/cover no-repeat fixed;
+            position: relative;
+            font-family: 'Rokkit', serif;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-    }
+
+        /* Background Image (Pseudo-element) */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
+            z-index: -2; /* Keeps it behind everything */
+        }
+
+        /* Dark Overlay (Separate from the image) */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Adjust darkness here */
+            z-index: -1; /* Stays above the image but behind content */
+        }
+
+        /* Large screens: Make overlay slightly lighter */
+        @media (min-width: 1024px) {
+            body::after {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
+                z-index: -1;
+            }
+        }
 
 
 
 
         /* College Name */
         .college-name{
-            font-family: 'Glyphic', sans-serif;
-            color: #F0EE1C;
+            font-family: 'Bebas Neue', cursive;
+            color: #DCD8D8;
         }
         .user{
             font-family: 'Chakra Petch', sans-serif;
+            color: #d64a24;
         }
 
         /* Main Content */
         .content {
-            font-family: 'Rokkit', serif;
+            font-family: 'LORA', serif;
         }
         .countdown {
-            font-family: 'Quantico', sans-serif;
+            font-family: 'Orbitron', sans-serif;
+            color: #00FFFF;
         }
 
         /* "Shackles" Heading */
         .shackles-title {
-            font-family: 'Bungee Inline', cursive;
+            font-family: 'RacingSansOne', cursive;
         }
         /* Titles */
         .title {
-            font-family: 'Monomaniac One', sans-serif;
+            font-family: 'Goldman', sans-serif;
+        }
+        .welcome {
+            font-family: 'Goldman', sans-serif;
+            color: #E06545;
         }
         .neon-button {
-            background: linear-gradient(90deg, #F2c56f, #af8b83);
+            background: linear-gradient(90deg, #FFC21D, #D39B00);
             background-size: 200% auto;
             color: #fff;
             text-transform: uppercase;
@@ -146,7 +159,7 @@
             }
     
             #menu-small a:hover {
-                background-color: #af8b83;
+                background-color: #b82200;
             }
         }
     
@@ -156,7 +169,7 @@
             top: 15px;
             right: 15px;
             z-index: 1000; /* Higher than #menu-small */
-            background: rgba(0, 0, 0, 0.9);
+            
             color: white;
             border: none;
             padding: 10px;
@@ -326,58 +339,65 @@
 </head>
 <body class="bg-black background">
     <!-- Navbar -->
-    <nav class=" p-5  flex items-center justify-between relative z-10">
-        <h1 class="text-xl font-extrabold mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+    <nav class="p-5 flex items-center justify-between relative z-10">
+        <h1 class="text-xl font-extrabold mx-auto md:mx-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+            
         </h1>
-        <button id="menu-toggle" class="lg:hidden text-white">
+        <button id="menu-toggle" class="md:hidden text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
         </button>
-
-        <!-- Menu on large screens -->
-        <div id="menu-large" class="hidden lg:flex lg:space-x-3 lg:static slide-in flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
-            <a href="{% url 'team' %}" class="text-white py-2">Team</a>
-            <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
-        </div>
-
-        <!-- Menu on small screens -->
-        <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl title">
-            <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
+    
+        <!-- Large Screen Menu (Visible from md: 768px onwards) -->
+        <div id="menu-large" class="hidden md:flex md:space-x-3 title">
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
             <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
             <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
-            <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
+            
+        </div>
+    
+        <!-- Small Screen Menu (Hidden above 768px) -->
+        <div id="menu-small" class="hidden md:hidden flex flex-col items-center rounded-l-xl title">
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
+            
         </div>
     </nav>
 
     <section class="p-10">
-        <h1 class="flex justify-center font-extrabold text-3xl color-change shackles-title">Shackles-25</h1>
+        <div class="flex justify-center m-8" >
+            <img class="shackles-img " src="https://i.imgur.com/FG7DRTz.png" alt="SHACKLES">
+        </div>
         <div class="flex justify-center">
-            <h2 class="text-center college-name p-3 font-extrabold text-yellow-300">Alagappa Chettiar Government College Of Engineering And Technology</h2>
+            <h2 class="text-center college-name p-3 lg:text-5xl font-extrabold italic text-yellow-300">Alagappa Chettiar Government College Of Engineering And Technology Karaikudi</h2>
         </div>
     </section>
     <div class="flex flex-col lg:flex-row items-center justify-center px-4 lg:px-16 flex-grow mb-6">
         <div class="text-center mb-8 lg:mb-0 lg:w-1/2">
-            <h2 class="text-2xl font-bold text-cyan-400 drop-shadow-lg">Countdown to Shackles Symposium</h2>
+            <h2 class="text-2xl countdown font-bold text-cyan-400 drop-shadow-lg">Countdown to Shackles Symposium</h2>
+            <h2 class="text-2xl countdown font-bold text-cyan-400 drop-shadow-lg">27 & 28 March</h2>
             <div id="countdown" class="countdown-box mt-5"></div>
         </div>
 
         <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm lg:w-1/2 p-6 lg:p-8 bg-gray-800 bg-opacity-70 rounded-lg shadow-lg text-center lg:text-left mt-4 lg:mt-0">
-            <div class="flex justify-center animate-pulse">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-red-500">Welcome</h2>
-                <h2 class="text-3xl pl-2 lg:text-4xl font-bold mb-6 text-red-500">Racer!</h2>
+            <div class="flex justify-center welcome ">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-2 welcome fade-in  text-red-500">Welcome</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-2 welcome fade-in  text-red-500">Racer!</h2>
             </div>
 
             <form method="POST" class="space-y-3 ">
                 {% csrf_token %}
                 <div >
-                    <label for="user_name" class="block text-sm flex  font-medium text-gray-300">Email</label>
+                    <label for="user_name" class="block text-sm flex  font-medium title text-gray-300">Email</label>
                     <input type="email" id="user_name" name="user_name" required placeholder="Enter your email"
                         class="w-full user mt-2 p-3 rounded-md text-black focus:ring-2 focus:ring-red-500 focus:outline-none">
                 </div>
                 <div>
-                    <label for="password" class="block text-sm flex font-medium text-gray-300">Password</label>
+                    <label for="password" class="block text-sm title flex font-medium text-gray-300">Password</label>
                     <input type="password" id="password" name="password" required placeholder="Enter your password"
                         class="w-full mt-2 user p-3 rounded-md text-black focus:ring-2 focus:ring-red-500 focus:outline-none">
                 </div>
@@ -386,7 +406,7 @@
                 </button>
             </form>
 
-            <p class="mt-5 text-sm text-gray-300">Don't have an account? <a href="{% url 'register' %}" class="font-bold text-red-400 hover:text-red-500">Sign Up</a></p>
+            <p class="mt-5 text-sm text-gray-300">Don't have an account? <a href="{% url 'register' %}" class="welcome font-bold text-red-400 hover:text-red-500">Register</a></p>
         </div>
     </div>
     <div class=" mt-5 mx-4 my-4 text-black rounded-xl p-4">
@@ -394,16 +414,18 @@
         <div class="w-full border border-b-2  shadow-2xl bg-opacity-70">
             <img class="w-full h-auto rounded-lg " src="https://ugcounselor-content.s3.ap-south-1.amazonaws.com/wp-content/uploads/2024/10/03154435/Alagappa-Chettair-Government-College-of-Engineering-and-Technology.jpg" alt="Alagappa Chettiar College">
         </div>
-        <p class="text-center bg-white p-3 font-bold leading-relaxed">
-            <strong>Alagappa Chettiar College of Engineering and Technology (ACCET)</strong> is a prestigious engineering institution located in Karaikudi, Tamil Nadu. Founded in **1952**, the college is affiliated with **Anna University** and has consistently maintained a reputation for excellence in technical education and research.
-           r its **state-of-the-art laboratories, industry collaborations, and student-driven projects**, making it a hub for aspiring mechanical engineers. It regularly organizes **workshops, guest lectures, and technical events** to keep students updated with the latest industry trends.
+        <p class="text-center content p-3 leading-relaxed bg-white">
+            <strong>SHACKLES 2025</strong>  is the annual state-level technical symposium organized by Mechasso, the Mechanical Engineering Association of Alagappa Chettiar Government College of Engineering & Technology (ACGCET), Karaikudi. Held over two days in February or March, this prestigious event attracts participants from various colleges across the state, fostering innovation, technical excellence, and collaboration.
+
+ACGCET, established in 1952, is a government autonomous engineering college in Karaikudi, Tamil Nadu. It is among the 11 institutions in Tamil Nadu selected under the TEQIP (Technical Education Quality Improvement Programme), reflecting its commitment to academic excellence and technological advancement.
         </p>
     </div>
     
     
 
-    <footer class="p-6 bg-gray-800 text-center text-white mt-auto">
-        <p>&copy; 2025 Shackles Symposium.</p>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
 
 
@@ -438,7 +460,7 @@
         }
 
         // Set the target date (YYYY, MM (0-11), DD)
-        const eventDate = new Date(2025, 2, 13, 10, 0, 0).getTime(); // Example: Feb 15, 2025, 10 AM
+        const eventDate = new Date(2025, 2, 27, 10, 0, 0).getTime();
         startCountdown(eventDate);
 
         // Toggle menu on small screens
@@ -449,28 +471,7 @@
             menuSmall.classList.toggle("show");
         });
 
-        // Chatbot functionality
-        const chatbotIcon = document.createElement("div");
-        chatbotIcon.classList.add("chatbot-icon");
-        chatbotIcon.innerHTML = '<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/ChatGPT_logo_2023.svg/1200px-ChatGPT_logo_2023.svg.png" alt="Chatbot">';
-        document.body.appendChild(chatbotIcon);
-
-        const chatbotContainer = document.createElement("div");
-        chatbotContainer.classList.add("chatbot-container");
-        chatbotContainer.innerHTML = `
-            <div class="close-btn">&times;</div>
-            <iframe src="https://chat.openai.com" title="Chatbot"></iframe>
-        `;
-        document.body.appendChild(chatbotContainer);
-
-        chatbotIcon.addEventListener("click", () => {
-            chatbotContainer.style.display = chatbotContainer.style.display === "none" ? "block" : "none";
-        });
-
-        const closeBtn = chatbotContainer.querySelector(".close-btn");
-        closeBtn.addEventListener("click", () => {
-            chatbotContainer.style.display = "none";
-        });
+        
     </script>
 </body>
 </html>

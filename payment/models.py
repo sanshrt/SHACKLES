@@ -8,4 +8,5 @@ class Payment(models.Model):
     transactionId = models.CharField(max_length=250, default='')
     transactionDate = models.DateTimeField()
     hasRegistered = models.BooleanField(default=False)
-
+    def __str__(self):
+        return f"{self.user.username} - {self.paymentAmount}"

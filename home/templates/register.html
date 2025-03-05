@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Goldman&family=Oxanium&family=Quantico&family=Ubuntu" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
-            body {
+        body {
             position: relative;
             font-family: 'Rokkit', serif;
             color: #ffffff;
@@ -25,7 +26,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("{% static 'WhatsApp Image 2025-02-08 at 9.10.58 PM.jpeg' %}") center/cover no-repeat fixed;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
             z-index: -2; /* Keeps it behind everything */
         }
 
@@ -37,14 +38,22 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.6); /* Adjust darkness here */
+            background: rgba(0, 0, 0, 0.4); /* Adjust darkness here */
             z-index: -1; /* Stays above the image but behind content */
         }
 
         /* Large screens: Make overlay slightly lighter */
         @media (min-width: 1024px) {
             body::after {
-                background: rgba(0, 0, 0, 0.4);
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
+                z-index: -1;
             }
         }
 
@@ -97,7 +106,7 @@
             margin-top: 8px;
             border: 2px solid #ff6347;
             border-radius: 10px;
-            background-color: #222;
+            background-color: #000000;
             color: #fff;
             font-size: 1rem;
             transition: border-color 0.3s;
@@ -145,10 +154,11 @@
 
         /* Remove the box-like structure and make columns blend with the background */
         .column-box {
-            background-color: #2f2f2f; /* No background color */
+            background-color: #696767; /* No background color */
             padding: 20px;
             border: none; /* No border */
             text-align: left;
+            opacity: 80%;
         }
 
         footer {
@@ -201,7 +211,7 @@
 
         /* Main Content */
         .content {
-            font-family: 'Rokkit', serif;
+            font-family: 'Ubuntu', serif;
         }
         .countdown {
             font-family: 'Quantico', sans-serif;
@@ -213,60 +223,12 @@
         }
         /* Titles */
         .title {
-            font-family: 'Monomaniac One', sans-serif;
+            font-family: 'Oxanium', sans-serif;
         }
-        .chatbot-icon {
-        width: 60px;
-        height: 60px;
-        background-color: #007bff;
-        border-radius: 50%;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 1000;
+        .navf{
+            font-family: 'Goldman', sans-serif;
         }
-        .chatbot-icon img {
-        width: 30px;
-        height: 30px;
-        }
-        .chatbot-container {
-        display: none;
-        position: fixed;
-        bottom: 90px;
-        right: 20px;
-        width: 350px;
-        height: 430px;
-        background-color: #fff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        border-radius: 10px;
-        overflow: hidden;
-        z-index: 1000;
-        }
-        .chatbot-container iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-        }
-        .close-btn {
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        background-color: #ff5f5f;
-        width: 20px;
-        height: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 50%;
-        font-size: 14px;
-        color: #fff;
-        cursor: pointer;
-        }
+    
         /* Hide menu by default on small screens */
         #menu-small {
             display: none;
@@ -327,7 +289,7 @@
             top: 15px;
             right: 15px;
             z-index: 1000; /* Higher than #menu-small */
-            background: rgba(0, 0, 0, 0.9);
+            
             color: white;
             border: none;
             padding: 10px;
@@ -412,22 +374,28 @@
         </button>
 
         <!-- Menu on large screens -->
-        <div id="menu-large" class="hidden lg:flex lg:space-x-3 slide-in lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
+        <div id="menu-large" class="hidden navf lg:flex lg:space-x-3 slide-in lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
             <a href="{% url 'team' %}" class="text-white py-2">Team</a>
-            <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
+
+            
         </div>
 
         <!-- Menu on small screens -->
-        <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl title">
+        <div id="menu-small" class="hidden lg:hidden flex navf flex-col items-center rounded-l-xl navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
             <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
             <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
             <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
-            <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
+            
         </div>
     </nav>
     <div class="  container justify-center mx-auto">
-        <h2 class="heading title sm:justify-center">Registration</h2>
+        <h2 class="text-3xl title sm:justify-center">Registration</h2>
         <form method="post" action="{% url 'register' %}" class="space-y-6">
             {% csrf_token %}
             {{ form.non_field_errors|striptags|linebreaks }}
@@ -438,14 +406,14 @@
 
                 <!-- Second Column (transparent, no box) -->
                 <div class="column-box">
-                    <label for="{{ form.name.id_for_label }}" class="form-label">{{ form.name.label }}</label>
+                    <label for="{{ form.name.id_for_label }}" class="form-label content">{{ form.name.label }}</label>
                     <input type="text" name="name" id="{{ form.name.id_for_label }}" class="form-input" placeholder="Enter your full name" autocomplete="name">
                     <p class="form-error">{{ form.name.errors }}</p>
                 </div>
 
                 <!-- Third Column (transparent, no box) -->
                 <div class="column-box">
-                    <label for="{{ form.email_id.id_for_label }}" class="form-label">{{ form.email_id.label }}</label>
+                    <label for="{{ form.email_id.id_for_label }}" class="form-label content">{{ form.email_id.label }}</label>
                     <input type="email" name="email_id" id="{{ form.email_id.id_for_label }}" class="form-input" placeholder="Enter your email" autocomplete="email">
                     <p class="form-error">{{ form.email_id.errors }}</p>
                 </div>
@@ -506,30 +474,21 @@
                 </div>
             </div>
 
-            <div class="text-center  mt-6 ">
+            <div class="text-center content  mt-6 ">
                 <button type="submit" class="submit-btn">Register</button>
             </div>
         </form>
 
         <div class="mt-6">
-            <p class="text-gray-400">Already have an account? 
-                <a href="{% url 'login' %}" class="text-red-500 hover:underline">Login</a>
+            <p class="text-gray-700">Already have an account? 
+                <a href="{% url 'login' %}" class="text-red-500 content hover:underline">Login</a>
             </p>
         </div>
         
     </div>
-     <!-- Chatbot Icon -->
-    <div class="chatbot-icon" id="chatbotIcon">
-        <img src="https://img.icons8.com/material-rounded/30/ffffff/chat.png" alt="Chat Icon">
-    </div>
-
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="close-btn" id="closeBtn">×</div>
-        <iframe allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/8c8ff597-f213-4527-8f0f-88b36dcc9885"></iframe>
-    </div>
+    
     <footer class="bg-gray-900 text-white text-center py-4">
-        <p>&copy; 2025 Shackles-25.</p>
+        <p>Developed and Maintained by MechAsso ACGCET </p>
     </footer>
     <script>
         document.addEventListener("DOMContentLoaded", function() {

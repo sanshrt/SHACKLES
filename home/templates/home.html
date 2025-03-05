@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&family=Goldman&family=Chakra+Petch&family=Lora&family=Monomaniac+One&family=Orbitron&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Goldman&family=Chakra+Petch&family=Lora&family=Monomaniac+One&family=Orbitron&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
 
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
@@ -64,11 +64,12 @@
 
         /* College Name */
         .college-name{
-            font-family: 'Racing Sans One', cursive;
-            color: #F0EE1C;
+            font-family: 'Bebas Neue', cursive;
+            color: #DCD8D8;
         }
         .user{
             font-family: 'Chakra Petch', sans-serif;
+            color: #d64a24;
         }
 
         /* Main Content */
@@ -77,6 +78,7 @@
         }
         .countdown {
             font-family: 'Orbitron', sans-serif;
+            color: #00FFFF;
         }
 
         /* "Shackles" Heading */
@@ -87,8 +89,15 @@
         .title {
             font-family: 'Goldman', sans-serif;
         }
+        .navf{
+            font-family: 'Goldman', sans-serif;
+        }
+        .welcome {
+            font-family: 'Goldman', sans-serif;
+            color: #E06545;
+        }
         .neon-button {
-            background: linear-gradient(90deg, #F2c56f, #af8b83);
+            background: linear-gradient(90deg, #FFC21D, #D39B00);
             background-size: 200% auto;
             color: #fff;
             text-transform: uppercase;
@@ -153,7 +162,7 @@
             }
 
             #menu-small a:hover {
-                background-color: #af8b83;
+                background-color: #b82200;
             }
         }
 
@@ -196,7 +205,7 @@
             top: 15px;
             right: 15px;
             z-index: 1000; /* Higher than #menu-small */
-            background: rgba(0, 0, 0, 0.9);
+            
             color: white;
             border: none;
             padding: 10px;
@@ -364,14 +373,14 @@
         </button>
     
         <!-- Large Screen Menu (Visible from md: 768px onwards) -->
-        <div id="menu-large" class="hidden md:flex md:space-x-3 title">
+        <div id="menu-large" class="hidden md:flex md:space-x-3 navf">
             <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
             <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
         </div>
     
         <!-- Small Screen Menu (Hidden above 768px) -->
-        <div id="menu-small" class="hidden md:hidden flex flex-col items-center rounded-l-xl title">
+        <div id="menu-small" class="hidden md:hidden flex flex-col items-center rounded-l-xl navf">
             <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
             <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
@@ -384,10 +393,10 @@
     <!-- Content Section -->
     <section class="p-10">
         <div class="flex justify-center m-8" >
-            <img class="shackles-img bg-white" src="https://i.imgur.com/7JElYRE.png" alt="SHACKLES">
+            <img class="shackles-img " src="https://i.imgur.com/FG7DRTz.png" alt="SHACKLES">
         </div>
         <div class="flex justify-center">
-            <h2 class="text-center college-name p-3 lg:text-3xl font-extrabold text-yellow-300">Alagappa Chettiar Government College Of Engineering And Technology Karaikudi</h2>
+            <h2 class="text-center college-name p-3 lg:text-5xl font-extrabold italic ">Alagappa Chettiar Government College Of Engineering And Technology Karaikudi</h2>
         </div>
     </section>
 
@@ -402,8 +411,8 @@
         <!-- Main Content Box -->
         <div class="w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-sm lg:w-1/2 p-6 lg:p-8 bg-gray-800 bg-opacity-70 rounded-lg shadow-lg text-center lg:text-left mt-4 lg:mt-0">
             <div class="flex flex-col justify-center items-center ">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-2 title fade-in  text-red-500">Welcome</h2>
-                <h2 class="text-3xl lg:text-4xl font-bold mb-6 text-red-800 user">{{ username }}</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-2 welcome fade-in  text-red-500">Welcome</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold mb-6  user">{{ username }}</h2>
             </div>
             
     
@@ -418,10 +427,10 @@
                             <!-- Logout form -->
                             <form action="{% url 'logout' %}" method="POST" style="display: inline;">
                                 {% csrf_token %}
-                                <button type="submit" class="text-red-500 hover:underline bg-transparent border-none">Logout</button>
+                                <button type="submit" class="welcome hover:underline bg-transparent border-none">Logout</button>
                             </form>
                         {% else %}
-                            <a href="{% url 'login' %}" class="text-blue-500 hover:underline">Login</a>
+                            <a href="{% url 'login' %}" class="welcome hover:underline">Login</a>
                         {% endif %}
                     </p>
                 </div>
@@ -446,7 +455,7 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white text-center py-4">
-        <p>&copy; 2025 Shackles-25.</p>
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
 
     <script>

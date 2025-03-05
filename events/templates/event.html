@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Ubuntu&family=Monomaniac+One&family=Encode+Sans+Semi+Expanded&family=Goldman" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
       /* Remove background from body and apply it using a pseudo-element */
         body {
@@ -26,7 +27,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("https://i.imgur.com/IIcuba6.jpeg") center/cover no-repeat fixed;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
             z-index: -2; /* Keeps it behind everything */
         }
 
@@ -52,7 +53,7 @@
                 width: 100%;
                 height: 100%;
                 background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
-                            url("https://i.imgur.com/3zxBNiY.jpeg") center/cover no-repeat fixed;
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
                 z-index: -1;
             }
         }
@@ -61,11 +62,11 @@
 
 
         /* College Name */
-        .college-name{
-            font-family: 'Glyphic', sans-serif;
+        .su{
+            font-family: 'Ubuntu', sans-serif;
             color: #F0EE1C;
         }
-        .user{
+        .event{
             font-family: 'Chakra Petch', sans-serif;
         }
 
@@ -73,8 +74,8 @@
         .content {
             font-family: 'Rokkit', serif;
         }
-        .countdown {
-            font-family: 'Quantico', sans-serif;
+        .eventdes {
+            font-family: 'Encode Sans Semi Expanded', sans-serif;
         }
 
         /* "Shackles" Heading */
@@ -84,6 +85,9 @@
         /* Titles */
         .title {
             font-family: 'Monomaniac One', sans-serif;
+        }
+        .navf{
+            font-family: 'Goldman', sans-serif;
         }
 
         .neon-button {
@@ -194,7 +198,7 @@
         }
 
         #menu-small a:hover {
-            background-color: #af8b83;
+            background-color: #b82200;
         }
         }
 
@@ -204,7 +208,7 @@
             top: 15px;
             right: 15px;
             z-index: 1000; /* Higher than #menu-small */
-            background: rgba(0, 0, 0, 0.9);
+            
             color: white;
             border: none;
             padding: 10px;
@@ -335,34 +339,36 @@
 </head>
 <body class="">
     <!-- Navbar -->
-    <nav class=" p-5  flex items-center justify-between relative z-10">
-        <h1 class="text-xl font-extrabold mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+    <nav class="p-5 flex items-center justify-between relative z-10">
+        <h1 class="text-xl font-extrabold mx-auto md:mx-0 md:absolute md:left-1/2 md:transform md:-translate-x-1/2">
+            
         </h1>
-        <button id="menu-toggle" class="lg:hidden text-white">
+        <button id="menu-toggle" class="md:hidden text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
             </svg>
         </button>
-
-        <!-- Menu on large screens -->
-        <div id="menu-large" class="hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
-            <a href="{% url 'team' %}" class="text-white py-2">Team</a>
-            
-            <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
-        </div>
-
-        <!-- Menu on small screens -->
-        <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl title">
-            <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
+    
+        <!-- Large Screen Menu (Visible from md: 768px onwards) -->
+        <div id="menu-large" class="hidden md:flex md:space-x-3 navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
-            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
             <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
-            <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
+            
+        </div>
+    
+        <!-- Small Screen Menu (Hidden above 768px) -->
+        <div id="menu-small" class="hidden md:hidden flex flex-col items-center rounded-l-xl navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white font-bold py-2">Team</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
+            
         </div>
     </nav>
-
     <div class="p-5">
-        <h1 class="flex justify-center text-3xl font-extrabold">Events</h1>
+        <h1 class="flex justify-center event text-3xl font-extrabold">Events</h1>
     </div>
     <!-- Event Section -->
     <div class="event-grid">
@@ -378,32 +384,23 @@
                 <img src="{{event.pic}}"  class="event-image">
             </a>
             {% endif %}
-            <h2 class="text-xl font-bold text-white py-2">{{ event.name }}</h2>
-            <p class="text-white flex justify-center p--2">{{ event.description }}</p>
-            <p class="text-white p-5"><strong>Date:</strong> {{ event.date }}</p>
-            <a  class="flex justify-center " href="{{event.doc}}">download</a>
+            <h2 class="text-xl font-bold  event  text-white py-2">{{ event.name }}</h2>
+            <p class="text-white flex eventdes justify-center p--2">{{ event.description }}</p>
+            <p class="text-white eventdes p-5"><strong>Date:</strong> {{ event.date }}</p>
+            <a  class="flex justify-center eventdes text-underline " href="{{event.doc}}">Rules</a>
             {% if user.is_authenticated %}
-            <a href="{% url 'event_register' event.id %}" class="neon-button py-3 px-6 mt-4 inline-block">Register</a>
+            <a href="{% url 'event_register' event.id %}" class="neon-button py-3 px-6 mt-4 su inline-block">Register</a>
             {% else %}
-            <a href="{% url 'login' %}" class="neon-button py-3 px-6 mt-4 inline-block">Login to Register</a>
+            <a href="{% url 'login' %}" class="neon-button py-3 px-6 mt-4 su inline-block">Login to Register</a>
             {% endif %}
         </div>
         {% endfor %}
     </div>
-    <!-- Chatbot Icon -->
-    <div class="chatbot-icon" id="chatbotIcon">
-        <img src="https://img.icons8.com/material-rounded/30/ffffff/chat.png" alt="Chat Icon">
-    </div>
-
-    <!-- Chatbot Container -->
-    <div class="chatbot-container" id="chatbotContainer">
-        <div class="close-btn" id="closeBtn">×</div>
-        <iframe allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/8c8ff597-f213-4527-8f0f-88b36dcc9885"></iframe>
-    </div>
+    
 
     <!-- Footer -->
-    <footer class="bg-gray-800" >
-        <p>© 2025 Shackles Symposium.</p>
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
     <script>
         // Toggle mobile menu

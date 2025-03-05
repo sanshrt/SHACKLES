@@ -6,9 +6,16 @@ from payment.models import Payment
 
 # Home page view
 def home(request):
-    user = Register.objects.first() 
     if request.user.is_authenticated:
-        return render(request, 'home.html', {'user': request.user,'username': user.name})
+        try:
+            user_register = Register.objects.get(user=request.user)  # Get the logged-in user's details
+            print(f"Logged-in User: {request.user}")  # Debugging
+            print(f"Registered Name: {user_register.name}")  # Debugging
+            
+            return render(request, 'home.html', {'user': request.user, 'username': user_register.name})
+        except Register.DoesNotExist:
+            print("User is logged in but has no Register entry.")
+            return render(request, 'home.html', {'user': request.user, 'username': 'Guest'})
     else:
         return redirect('login')
 

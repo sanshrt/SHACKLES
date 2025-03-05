@@ -9,3 +9,5 @@ class Register(models.Model):
     phone_number = models.CharField(max_length=15)
     email_id = models.EmailField(unique=True)
     department = models.CharField(max_length=50)
+    def __str__(self):
+        return self.name

@@ -10,9 +10,10 @@
     <title>Shackles</title>
     <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
       /* Remove background from body and apply it using a pseudo-element */
-        body {
+      body {
             position: relative;
             font-family: 'Rokkit', serif;
             color: #ffffff;
@@ -29,7 +30,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("https://i.imgur.com/IIcuba6.jpeg") center/cover no-repeat fixed;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
             z-index: -2; /* Keeps it behind everything */
         }
 
@@ -55,7 +56,7 @@
                 width: 100%;
                 height: 100%;
                 background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
-                            url("https://i.imgur.com/3zxBNiY.jpeg") center/cover no-repeat fixed;
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
                 z-index: -1;
             }
         }
@@ -64,11 +65,11 @@
 
 
         /* College Name */
-        .college-name{
-            font-family: 'Glyphic', sans-serif;
+        .su{
+            font-family: 'Ubuntu', sans-serif;
             color: #F0EE1C;
         }
-        .user{
+        .event{
             font-family: 'Chakra Petch', sans-serif;
         }
 
@@ -76,8 +77,8 @@
         .content {
             font-family: 'Rokkit', serif;
         }
-        .countdown {
-            font-family: 'Quantico', sans-serif;
+        .eventdes {
+            font-family: 'Encode Sans Semi Expanded', sans-serif;
         }
 
         /* "Shackles" Heading */
@@ -315,29 +316,31 @@
 
         <!-- Menu on large screens -->
         <div id="menu-large" class="hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
-            <a href="{% url 'team' %}" class="text-white py-2">team</a>
-            
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white py-2">Team</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
             <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
         </div>
 
         <!-- Menu on small screens -->
         <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl title">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
             <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
-            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
             <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
             <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
         </div>
     </nav>
     {% block content %}
     <div class="p-5">
-        <h1 class="text-3xl font-extrabold text-center text-white p-5">Register for {{ event.name }}</h1>
-        <p class="text-xl text-center text-white"><strong>Date:</strong> {{ event.date }}</p>
-       <p class="text-white text-center"><strong>Description:</strong> {{ event.description }}</p>
+        <h1 class="text-3xl font-extrabold text-center event text-white p-5">Register for {{ event.name }}</h1>
+        <p class="text-xl text-center eventdes text-white"><strong>Date:</strong> {{ event.date }}</p>
+       <p class="text-white eventdes text-center"><strong>Description:</strong> {{ event.description }}</p>
         
         {% if info %}
         <ul class="flex justify-center">
-            <li class="text-white">{{ info }}</li>
+            <li class="text-white eventdes ">{{ info }}</li>
         </ul>
         {% endif %}
     
@@ -345,17 +348,15 @@
         <div class="flex justify-center">
             <form method="POST">
                 {% csrf_token %}
-                <button type="submit" class="neon-button   py-3 px-6 mt-4 inline-block">Register Now</button>
+                <button type="submit" class="neon-button su  py-3 px-6 mt-4 inline-block">Register Now</button>
             </form>
         </div>
     </div>
     {% endblock %}
     
     <!-- Footer -->
-    <footer class="bg-gray-800  py-4">
-        <div class="container text-center">
-            <p>© 2025 Shackles Symposium.</p>
-        </div>
+    <footer class="bg-gray-900 text-white text-center py-4">
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
 
     <!-- Add this script to toggle the menu on small screens -->

@@ -5,11 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Goldman&family=Monomaniac+One&family=Quantico&family=Poppins" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
-      /* Remove background from body and apply it using a pseudo-element */
-        body {
+    body {
             position: relative;
             font-family: 'Rokkit', serif;
             color: #ffffff;
@@ -26,7 +26,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: url("https://i.imgur.com/IIcuba6.jpeg") center/cover no-repeat fixed;
+            background: url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493260/phonecars_a4gmyf.jpg") center/cover no-repeat fixed;
             z-index: -2; /* Keeps it behind everything */
         }
 
@@ -52,7 +52,7 @@
                 width: 100%;
                 height: 100%;
                 background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.4)), 
-                            url("https://i.imgur.com/3zxBNiY.jpeg") center/cover no-repeat fixed;
+                            url("https://res.cloudinary.com/devihgb9o/image/upload/v1740493160/cars_kv4pse.jpg") center/cover no-repeat fixed;
                 z-index: -1;
             }
         }
@@ -73,8 +73,8 @@
         .content {
             font-family: 'Rokkit', serif;
         }
-        .countdown {
-            font-family: 'Quantico', sans-serif;
+        .contact {
+            font-family: 'Poppins', sans-serif;
         }
 
         /* "Shackles" Heading */
@@ -307,6 +307,14 @@
             from { transform: translateX(-100%); }
             to { transform: translateX(0); }
         }
+        .box {
+            background-color: rgba(31, 41, 55, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navf{
+            font-family: 'Goldman', sans-serif;
+        }
     </style>
 </head>
 <body class="">
@@ -321,13 +329,16 @@
         </button>
 
         <!-- Menu on large screens -->
-        <div id="menu-large" class="hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
+        <div id="menu-large" class="hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto navf">
             <a href="{% url 'home' %}" class="text-white  py-2">Home</a>
+            <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
             <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
         </div>
 
         <!-- Menu on small screens -->
-        <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl title">
+        <div id="menu-small" class="hidden lg:hidden flex flex-col items-center rounded-l-xl navf">
             <a href="{% url 'home' %}" class="text-white font-bold py-2">Home</a>
             <a href="{% url 'team' %}" class="text-white  font-bold py-2">Team</a>
             <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
@@ -337,15 +348,20 @@
     </nav>
 
     <!-- Contact Information Section -->
-    <div class="text-center mt-8 py-10">
-        <p class="text-2xl font-bold text-white pb-3">contact us directly:</p>
-        <p class="text-lg text-white">Phone: <a  class="text-blue-400">9080849635</a></p>
-        <p class="text-lg text-white">Email: <a  class="text-blue-400">shackles2k25@gmail.com</a></p>
+    <div class="text-center mt-8 contact box py-16 px-10 lg:px-28 inline-block mx-auto bg-gray-800 rounded-lg shadow-lg">
+        <p class="text-2xl font-bold text-white pb-3">Contact us directly:</p>
+        <p class="text-lg text-white">General Enquiry</p>
+        <p class="text-lg text-white">Marudhan: <a class="text-blue-400">9080849635</a></p>
+        <p class="text-lg text-white">General Enquiry</p>
+        <p class="text-lg text-white">Keerthivasan: <a class="text-blue-400">9566960575</a></p>
+
+        <p class="text-lg text-white">Email: <a class="text-blue-400">shackles2k25@gmail.com</a></p>
     </div>
+    
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white text-center py-4">
-        <p>&copy; 2025 Shackles-25.</p>
+        <p>Developed and Maintained by Mech Asso ACGCET </p>
     </footer>
 
     <!-- Add this script to toggle the menu on small screens -->

@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shackles</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Glyphic&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&family=Faculty&family=Chakra+Petch&family=Goldman&family=Monomaniac+One&family=Quantico&family=Rokkit:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@latest/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="icon" type="image/jpeg" href="https://i.imgur.com/QUP0FPE.jpeg">
     <style>
         /* Ensure full viewport height */
         body {
@@ -78,6 +79,10 @@
         .title {
             font-family: 'Monomaniac One', sans-serif;
         }
+        .navf{
+            font-family: 'Goldman', sans-serif;
+        }
+
 
         .neon-button {
             background: linear-gradient(90deg, #F2c56f, #af8b83);
@@ -155,7 +160,7 @@
             top: 15px;
             right: 15px;
             z-index: 1000;
-            background: rgba(0, 0, 0, 0.9);
+            
             color: white;
             border: none;
             padding: 10px;
@@ -203,7 +208,7 @@
         /* Profile Image */
         .profile-card img {
             width: 150px;
-            height: 150px;
+            height: 250px;
             object-fit: cover;
             margin-right: 20px;
             border: 3px solid #ff0000;
@@ -216,6 +221,32 @@
             height: 300px;
             object-fit: cover;
         }
+        /* Large Screens (Laptops, Desktops) */
+        @media (min-width: 1024px) {
+        .profile-card img {
+            width: 150px; 
+            height: 450px !important; /* Force height change */
+        }
+
+        .student-image {
+            width: 300px;
+            height: 300px;
+        }
+        .profile-card{
+            display: flex;
+            align-items: center;
+            background: rgba(52, 51, 51, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(247, 5, 5, 0.805);
+            width: 500px; /* Fixed width */
+            height: 280px; /* Fixed height */
+            overflow: hidden;
+
+        }
+    }
+
 
         /* Navigation Container */
         .nav-container {
@@ -323,7 +354,8 @@
 </head>
 <body>
     <nav class=" p-5  flex items-center justify-between relative z-10">
-        <h1 class="text-xl title font-extrabold mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">TEAM
+        
+        <h1 class="text-xl title font-extrabold mx-auto lg:mx-0 lg:absolute lg:left-1/2 lg:transform mt-10 pt-10 lg:-translate-x-1/2">TEAM
         </h1>
         <button id="menu-toggle" class="lg:hidden text-white">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
@@ -332,18 +364,21 @@
         </button>
 
         <!-- Menu on large screens -->
-        <div id="menu-large" class="content hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto title">
-            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
-            <a href="{% url 'accommodation' %}" class="text-white py-2">Accommodation</a>
-        </div>
-
-        <!-- Menu on small screens -->
-        <div id="menu-small" class=" content hidden lg:hidden flex flex-col items-center rounded-l-xl title">
+        <div id="menu-large" class="content hidden lg:flex lg:space-x-3 lg:static flex flex-col slide-in lg:flex-row space-y-2 lg:space-y-0 lg:w-auto navf">
             <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
             <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
             <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
             <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
-            <a href="{% url 'accommodation' %}" class="text-white font-bold py-2">Accommodation</a>
+            
+        </div>
+
+        <!-- Menu on small screens -->
+        <div id="menu-small" class=" content hidden lg:hidden flex flex-col items-center rounded-l-xl navf">
+            <a href="{% url 'home' %}" class="text-white  font-bold py-2">Home</a>
+            <a href="{% url 'contact' %}" class="text-white font-bold py-2">Contact</a>
+            <a href="{% url 'event' %}" class="text-white font-bold py-2">Event</a>
+            <a href="{% url 'workshop_list' %}" class="text-white font-bold py-2">Workshop</a>
+            
         </div>
     </nav>
     <section class="min-h-screen flex flex-col justify-center items-center mt-5 mb-10">
@@ -354,7 +389,7 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/08tpOTm.jpeg" alt="Principal">
                     <div>
-                        <h2 class="text-xl font-bold countdown text-red-500">DR.BASKARAN K</h2>
+                        <h2 class=" font-bold countdown text-red-500">DR.BASKARAN K</h2>
                         <p class="user text-gray-300">PATRON</p>
                     </div>
                 </div>
@@ -365,7 +400,7 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/StYsyDW.jpeg" alt="HOD">
                     <div>
-                        <h2 class="text-xl  font-bold text-red-500">DR.RAMAANATHAN K</h2>
+                        <h2 class=" countdown font-bold text-red-500">DR.RAMANATHAN K</h2>
                         <p class="text-gray-300">CONVENOR</p>
                     </div>
                 </div>
@@ -374,8 +409,8 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/SesbIog.jpeg" alt="Treasurer">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">DR.SARALA</h2>
-                        <p class="text-gray-300">TREASURER MECHASS0</p>
+                        <h2 class="countdown font-bold text-red-500">DR.SARALA R</h2>
+                        <p class="text-gray-300">TREASURER MECHANICAL ASSO</p>
                     </div>
                 </div>
                 <div class="empty-div"></div>
@@ -385,16 +420,16 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/pdW7Daj.jpeg" alt="Student Coordinator">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">DR.BABU N</h2>
+                        <h2 class="countdown font-bold text-red-500">DR.BABU N</h2>
                         <p class="text-gray-300">COORDINATOR</p>
                     </div>
                 </div>
     
                 <!-- Row 5 -->
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/RIUaAxW.jpeg" alt="Secretary">
+                    <img src="https://i.imgur.com/YbsjOjG.jpeg" alt="Secretary">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">SUBASH B</h2>
+                        <h2 class="countdown font-bold text-red-500">SUBASH B</h2>
                         <p class="text-gray-300">SECRETARY</p>
                     </div>
                 </div>
@@ -405,7 +440,7 @@
                 <div class="profile-card">
                     <img src="https://imgur.com/Cwj3bTN.jpeg" alt="Joint Secretary">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">KEERTHIVASAN B</h2>
+                        <h2 class="countdown font-bold text-red-500">KEERTHIVASAN B</h2>
                         <p class="text-gray-300">JOINT SECRETARY</p>
                     </div>
                 </div>
@@ -414,7 +449,7 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/7SFW2FU.jpeg" alt="Treasurer">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">BHARATHI P</h2>
+                        <h2 class="countdown font-bold text-red-500">BHARATHI P</h2>
                         <p class="text-gray-300">TREASURER</p>
                     </div>
                 </div>
@@ -425,16 +460,16 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/6BUJneJ.jpeg" alt="Joint Treasurer">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">MARUDHAN T</h2>
+                        <h2 class="countdown font-bold text-red-500">MARUDHAN T</h2>
                         <p class="text-gray-300">JOINT TREASURER</p>
                     </div>
                 </div>
     
                 <!-- Row 9 -->
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/sample9.jpg" alt="Joint Treasurer-2">
+                    <img src="https://res.cloudinary.com/devihgb9o/image/upload/v1741192560/n_epgqdf.jpg" alt="Joint Treasurer-2">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">KAVIPRIYA P</h2>
+                        <h2 class="countdown font-bold text-red-500">KAVIPRIYA P</h2>
                         <p class="text-gray-300">JOINT TREASURER</p>
                     </div>
                 </div>
@@ -443,9 +478,9 @@
                 <!-- Row 10 -->
                 <div class="empty-div"></div>
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="Chief Designer">
+                    <img src="https://i.imgur.com/My6KEpq.jpeg" alt="Chief Designer">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">SAKTHIGANESH A</h2>
+                        <h2 class="countdown font-bold text-red-500">SAKTHIGANESH A</h2>
                         <p class="text-gray-300">CHIEF DESIGNER</p>
                     </div>
                 </div>
@@ -454,7 +489,7 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/Lkhh5Lx.jpeg" alt="Technical Directors">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">RAVINDRANATH A</h2>
+                        <h2 class="countdown font-bold text-red-500">RAVINDRANATH A</h2>
                         <p class="text-gray-300">TECHNICAL DIRECTOR</p>
                     </div>
                 </div>
@@ -463,16 +498,16 @@
                 <div class="profile-card">
                     <img src="https://i.imgur.com/QfQLt3S.jpeg" alt="Technical Directors">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">JANNA KRISHNAN V</h2>
+                        <h2 class="countdown font-bold text-red-500">JANNA KRISHNAN V</h2>
                         <p class="text-gray-300">TECHNICAL DIRECTOR</p>
                     </div>
                 </div>
     
                 <!-- Row 11 -->
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="Technical Directors">
+                    <img src="https://i.imgur.com/fIxfLRl.jpeg" alt="Technical Directors">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">MUTHU PRIYADHARSHINI P</h2>
+                        <h2 class="countdown font-bold text-red-500">MUTHU PRIYADHARSHINI P</h2>
                         <p class="text-gray-300">TECHNICAL DIRECTOR</p>
                     </div>
                 </div>
@@ -481,18 +516,18 @@
                 <!-- Row 12 -->
                 <div class="empty-div"></div>
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/s9oOLFf.jpeg" alt="Cultural Director">
+                    <img src="https://i.imgur.com/kMXD0Yf.jpeg" alt="Cultural Director">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">JAI SARAN G</h2>
+                        <h2 class="countdown font-bold text-red-500">JAI SARAN G</h2>
                         <p class="text-gray-300">CULTURAL COORDINATOR</p>
                     </div>
                 </div>
     
                 <!-- Row 13 -->
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="Cultural Director">
+                    <img src="https://i.imgur.com/5gEeNJ0.jpeg" alt="Cultural Director">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">SWETHA M</h2>
+                        <h2 class="countdown font-bold text-red-500">SWETHA M</h2>
                         <p class="text-gray-300">CULTURAL COORDINATOR</p>
                     </div>
                 </div>
@@ -501,38 +536,20 @@
                 <!-- Row 14 -->
                 <div class="empty-div"></div>
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/RaqWzDU.jpeg" alt="Student Coordinator">
+                    <img src="https://i.imgur.com/2Egahjh.jpeg" alt="Student Coordinator">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">MUKESH KANNAN S</h2>
+                        <h2 class="countdown font-bold text-red-500">MUKESH KANNAN S</h2>
                         <p class="text-gray-300">STUDENT COORDINATOR</p>
                     </div>
                 </div>
     
                 <!-- Row 15 -->
-                <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="Student Coordinator">
-                    <div>
-                        <h2 class="text-xl font-bold text-red-500">DEEPAKRAJ V</h2>
-                        <p class="text-gray-300">STUDENT COORDINATOR</p>
-                    </div>
-                </div>
-                <div class="empty-div"></div>
-    
-                <!-- Row 16 -->
-                <div class="empty-div"></div>
+                
                 <div class="profile-card">
                     <img src="https://i.imgur.com/zEtEYHg.jpeg" alt="Documentation Lead">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">GOBIKA G</h2>
+                        <h2 class="countdown font-bold text-red-500">GOBIKA G</h2>
                         <p class="text-gray-300">DOCUMENTATION LEAD</p>
-                    </div>
-                </div>
-                <!-- Row 15 -->
-                <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="UI DESIGNER">
-                    <div>
-                        <h2 class="text-xl font-bold text-red-500">HARISH J</h2>
-                        <p class="text-gray-300">DEVELOPER</p>
                     </div>
                 </div>
                 <div class="empty-div"></div>
@@ -540,17 +557,25 @@
                 <!-- Row 16 -->
                 <div class="empty-div"></div>
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="UI DESIGNER">
+                    <img src="https://i.imgur.com/ZW1ilBr.jpeg" alt="Student Coordinator">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">SURYA R</h2>
-                        <p class="text-gray-300">DEVELOPER</p>
+                        <h2 class="countdown font-bold text-red-500">DEEPAKRAJ V</h2>
+                        <p class="text-gray-300">STUDENT COORDINATOR</p>
                     </div>
                 </div>
                 <!-- Row 15 -->
+                
+               
+                
+            </div>
+            <div class="p-5">
+                <h1 class="font-extrabold text-4xl text-white flex justify-center title pt-8">WEBSITE TEAM</h1>
+            </div>
+            <div class="grid grid-cols-2 gap-6">
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/SesbIog.jpeg" alt="UI DESIGNER">
+                    <img src="https://i.imgur.com/jO7nAfe.jpeg" alt="DESIGNER">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">NAGARAJAN</h2>
+                        <h2 class="countdown font-bold text-red-500">HARISH J</h2>
                         <p class="text-gray-300">DESIGNER</p>
                     </div>
                 </div>
@@ -559,15 +584,33 @@
                 <!-- Row 16 -->
                 <div class="empty-div"></div>
                 <div class="profile-card">
-                    <img src="https://i.imgur.com/aLo5vjR.jpeg" alt="FULL STACK DEVELOPER">
+                    <img src="https://res.cloudinary.com/devihgb9o/image/upload/v1741194581/jljvyfxfg_ctcsdp.jpg" alt=" DESIGNER">
                     <div>
-                        <h2 class="text-xl font-bold text-red-500">SANTHOSH BABU</h2>
+                        <h2 class="countdown font-bold text-red-500">SURYA R</h2>
+                        <p class="text-gray-300">DESIGNER</p>
+                    </div>
+                </div>
+                <!-- Row 15 -->
+                <div class="profile-card">
+                    <img src="https://res.cloudinary.com/devihgb9o/image/upload/v1741194487/bbbbb_zunwyc.jpg" alt=" DESIGNER">
+                    <div>
+                        <h2 class="countdown font-bold text-red-500">NAGARAJAN R</h2>
+                        <p class="text-gray-300">DESIGNER</p>
+                    </div>
+                </div>
+                <div class="empty-div"></div>
+    
+                <!-- Row 16 -->
+                <div class="empty-div"></div>
+                <div class="profile-card">
+                    <img src="https://i.imgur.com/XYLdFJs.jpeg" alt="FULL STACK DEVELOPER">
+                    <div>
+                        <h2 class="countdown font-bold text-red-500">SANTHOSH BABU</h2>
                         <p class="text-gray-300">FULL STACK DEVELOPER</p>
                     </div>
                 </div>
-    
             </div>
-            <h1 class="font-extrabold text-4xl text-white flex justify-center title pt-8">Core Team.</h1>
+            <h1 class="font-extrabold text-4xl text-white flex justify-center title pt-8">CORE TEAM.</h1>
             <div class="w-full pt-8  shadow-2xl ">
                 <img class="w-full h-auto rounded-lg " src="https://i.imgur.com/7Uwadlj.jpeg" alt="Alagappa Chettiar College">
             </div>
