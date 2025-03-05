@@ -1,0 +1,33 @@
+# Byte-compiled / binary files
+__pycache__/
+*.py[cod]
+*.swp
+*.swo
+
+# Virtual environment
+venv/
+env/
+*.venv
+
+# Django specific
+db.sqlite3
+/media/
+staticfiles/
+
+# Logs
+*.log
+logs/
+
+# IDE / Editor files
+.vscode/
+.idea/
+
+# Environment variables
+.env
+*.env
+
+# Node.js (if using frontend)
+node_modules/
+
+# Deployment files
+.DS_Store
