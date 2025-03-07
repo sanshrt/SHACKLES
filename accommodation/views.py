@@ -1,19 +1,17 @@
-# views.py
-
 from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
 from .forms import AccommodationForm
+from django.contrib.auth.decorators import login_required  # Ensure user is logged in
 
 @login_required
-def add_accommodation(request):
-    if request.method == 'POST':
+def accommodation_view(request):
+    if request.method == "POST":
         form = AccommodationForm(request.POST)
         if form.is_valid():
-            accommodation = form.save(commit=False)  # Don't save immediately
-            accommodation.user = request.user  # Associate the accommodation with the logged-in user
-            accommodation.save()  # Save the accommodation data to the database
-            return redirect('home')  # Redirect to home after successful submission
+            accommodation = form.save(commit=False)
+            accommodation.user = request.user  # Assign the logged-in user
+            accommodation.save()
+            return redirect('home')  # Redirect to a success page
     else:
         form = AccommodationForm()
-
+    
     return render(request, 'add_accommodation.html', {'form': form})

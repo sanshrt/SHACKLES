@@ -180,7 +180,7 @@
             }
 
             #menu-small a:hover {
-                background-color: #af8b83;
+                background-color: #b82200;
             }
         }
 
@@ -279,7 +279,7 @@
                 
                 <!-- Hostel Requirement -->
                 <div class="items-center space-x-3 mb-4 ">
-                    <label class="flex justify-center py-5 text-white font-bold">Do you require a hostel?</label>
+                    <label class="flex justify-center py-5 text-white font-bold">Do you require hostel?</label>
                     <div class="flex justify-center space-x-5">
                         <label for="hostel_yes" class="text-white">Yes</label>
                         <input type="radio" id="hostel_yes" name="hostel_required" value="yes" class="bg-gray-500 text-white">
@@ -295,25 +295,14 @@
                         <input type="radio" id="gender_male" name="gender" value="male" class="bg-gray-500 text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
                         <label for="gender_female" class="text-white">Female</label>
                         <input type="radio" id="gender_female" name="gender" value="female" class="bg-gray-500 text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
-                        <label for="gender_other" class="text-white">Other</label>
+                        <label for="gender_other" class="text-white">Others</label>
                         <input type="radio" id="gender_other" name="gender" value="other" class="bg-gray-500 text-white p-2 rounded focus:outline-none focus:ring-2 focus:ring-red-500">
                     </div>
                 </div>
                 
-                <!-- Meal Options -->
-                <div class="meal-options space-x-3 mb-4 flex flex-col lg:flex-col lg:items-center justify-center">
-                    <label class="py-5 text-white font-bold">Meal Options</label>
-                    <div class="flex flex-wrap gap-2 justify-center lg:flex-row">
-                        <label for="meal_breakfast" class="text-white">Breakfast</label>
-                        <input type="checkbox" id="meal_breakfast" name="meal_options" value="breakfast" class="bg-gray-500 text-white" onchange="updateAmount()">
-                        <label for="meal_lunch" class="text-white">Lunch</label>
-                        <input type="checkbox" id="meal_lunch" name="meal_options" value="lunch" class="bg-gray-500 text-white" onchange="updateAmount()">
-                        <label for="meal_dinner" class="text-white">Dinner</label>
-                        <input type="checkbox" id="meal_dinner" name="meal_options" value="dinner" class="bg-gray-500 text-white" onchange="updateAmount()">
-                    </div>
-                </div>
+                
                 <!-- Amount Box -->
-                <div id="amount-box" class="amount-box">₹250 (without food)</div>
+                
                 
                 <div class="flex justify-center">
                     <button type="submit" class="neon-button py-2 px-4 mt-4 text-lg font-semibold rounded-lg">Submit</button>

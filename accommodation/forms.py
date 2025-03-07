@@ -6,4 +6,4 @@ from .models import Accommodation
 class AccommodationForm(forms.ModelForm):
     class Meta:
         model = Accommodation
-        fields = [ 'gender', 'hostel_required', 'meal_option']  # Include fields in the form
+        fields = [ 'gender', 'hostel_required']  # Include fields in the form
