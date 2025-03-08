@@ -276,7 +276,8 @@
             <h1 class="text-xl font-bold text-white workshop py-2">{{ workshop.name }}</h1>
             <p class="workshopdes">{{ workshop.description }}</p>
             <p class="workshopdes">{{ workshop.date }}</p>
-            <p class="workshopdes">Rs.{{ workshop.fees }}</p>
+            <p class="workshopdes">Only workshop 300
+                With general registration {{ workshop.fees }}</p>
 
             <!-- Workshop Registration Section -->
             {% if user.is_authenticated %}
