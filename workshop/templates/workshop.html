@@ -287,7 +287,7 @@
                     <a href="{% url 'register_workshop' pk=workshop.id %}" class="su  p-1 px-3 neon-button">Register</a>
                 {% endif %}
             {% else %}
-                <p class="su neon-button"> log in to register</p>
+            <a href="{% url 'home'  %}" class="su  p-1 px-3 neon-button">log in to register</a> 
             {% endif %}
         </div>
         {% endfor %}
