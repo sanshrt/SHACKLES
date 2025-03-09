@@ -24,9 +24,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-h%794m$t127hkq*5@0sl6d#gzf$ok1=#5#1l0c-ikhm2emkie*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['shackles-production.up.railway.app','127.0.0.1']
+ALLOWED_HOSTS = ['shackles-production.up.railway.app','127.0.0.1','shackles2k25.online']
 
 
 # Application definition
